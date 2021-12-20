@@ -1,0 +1,52 @@
+version: "3.5"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: >
+      sh -c "
+        bundle install
+        ./bin/dev
+      "
+    # so things like pry work
+    tty: true
+    stdin_open: true
+    volumes:
+      # bind-mount your working directory of code
+      - .:/home/app
+      # attach a volume at /usr/local/bundle to cache gems
+      - bundle:/usr/local/bundle
+      # attach a volume at ./node_modules to cache node modules
+      - node_modules:/home/app/node_modules
+    tmpfs:
+      - /tmp/pids/
+    environment:
+      - RAILS_ENV=development
+      - PIDFILE=/tmp/pids/server.pid
+    ports:
+      - "3000:3000"
+    links:
+      - "mysql:database"
+
+  mysql:
+    image: mysql:8.0.21
+    command:
+      - --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=app_development
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  bundle:
+    driver: local
+  mysql:
+    driver: local
+  tmp:
+    driver: local
+  node_modules:
+    driver: local

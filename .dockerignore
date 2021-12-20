@@ -1,0 +1,5 @@
+.bundle
+.git
+.gitignore
+log
+tmp
