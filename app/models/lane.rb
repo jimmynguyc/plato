@@ -1,18 +1,14 @@
 # == Schema Information
 #
-# Table name: boards
+# Table name: lanes
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer          not null
 #  title      :string(255)
+#  board_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require "test_helper"
-
-class BoardTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Lane < ApplicationRecord
+  belongs_to :board
 end

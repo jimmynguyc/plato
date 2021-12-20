@@ -1,18 +1,15 @@
 # == Schema Information
 #
-# Table name: boards
+# Table name: tasks
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer          not null
 #  title      :string(255)
+#  completed  :boolean          default("0")
+#  card_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require "test_helper"
-
-class BoardTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Task < ApplicationRecord
+  belongs_to :card
 end

@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  first_name             :string(255)
 #  last_name              :string(255)
+#  organization_id        :integer
 #
 
 require "test_helper"

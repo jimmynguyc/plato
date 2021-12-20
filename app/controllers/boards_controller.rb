@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: %i[ show edit update destroy ]
+  before_action :set_board, only: %i[show edit update destroy]
 
   # GET /boards or /boards.json
   def index
@@ -7,25 +7,23 @@ class BoardsController < ApplicationController
   end
 
   # GET /boards/1 or /boards/1.json
-  def show
-  end
+  def show; end
 
   # GET /boards/new
   def new
-    @board = Board.new
+    @board = current_user.boards.new
   end
 
   # GET /boards/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /boards or /boards.json
   def create
-    @board = Board.new(board_params)
+    @board = current_user.boards.new(board_params)
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to board_url(@board), notice: "Board was successfully created." }
+        format.html { redirect_to board_url(@board), notice: 'Board was successfully created.' }
         format.json { render :show, status: :created, location: @board }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class BoardsController < ApplicationController
   def update
     respond_to do |format|
       if @board.update(board_params)
-        format.html { redirect_to board_url(@board), notice: "Board was successfully updated." }
+        format.html { redirect_to board_url(@board), notice: 'Board was successfully updated.' }
         format.json { render :show, status: :ok, location: @board }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class BoardsController < ApplicationController
     @board.destroy
 
     respond_to do |format|
-      format.html { redirect_to boards_url, notice: "Board was successfully destroyed." }
+      format.html { redirect_to boards_url, notice: 'Board was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_board
-      @board = Board.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def board_params
-      params.fetch(:board, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_board
+    @board = Board.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def board_params
+    params.require(:board).permit(:title)
+  end
 end

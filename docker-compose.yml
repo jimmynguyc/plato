@@ -28,6 +28,7 @@ services:
       - "3000:3000"
     links:
       - "mysql:database"
+      - "redis:redis"
 
   mysql:
     image: mysql:8.0.21
@@ -40,6 +41,9 @@ services:
       - "3306:3306"
     volumes:
       - mysql:/var/lib/mysql
+
+  redis:
+    image: redis:6.2-alpine
 
 volumes:
   bundle:
