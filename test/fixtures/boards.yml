@@ -2,19 +2,20 @@
 #
 # Table name: boards
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer          not null
-#  title      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  user_id         :integer          not null
+#  title           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  organization_id :integer
 #
 
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   user: one
-  title: MyString
+  title: Board One
 
 two:
   user: two
-  title: MyString
+  title: Board Two

@@ -1,0 +1,3 @@
+<%= turbo_frame_tag "lane_#{lane.id}_new_card" do %>
+  <%= button_to 'New Card', new_board_lane_card_path(lane.board, lane), method: :get, class: "submit-btn mt-3" %>
+<% end %>

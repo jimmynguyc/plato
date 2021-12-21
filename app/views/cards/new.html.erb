@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "lane_#{@card.lane.id}_new_card" do %>
+  <div class="card">
+    <%= render "form", card: @card %>
+  </div>
+<% end %>

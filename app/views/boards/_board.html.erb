@@ -1,11 +1,18 @@
-<div id="<%= dom_id board %>">
-  <p class="my-5">
-  <strong class="block font-medium mb-1"><%= board.title %></strong>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this board", board, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this board', edit_board_path(board), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div id="<%= dom_id board %>" class="lg:w-1/3 md:w-1/2 w-full p-4 ">
+  <div class="p-8 rounded-xl border border-gray-200 bg-white">
+    <h4>
+      <%= board.title %>
+      <% if board.user == current_user %>
+        <%= link_to edit_board_path(board), class: "inline-block" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+        <% end %>
+      <% end %>
+    </h4>
+    <hr />
+    <% if action_name != "show" %>
+      <%= button_to "Show", board, method: :get, class: "my-4 px-4 py-2 block w-full text-white bg-blue-500 hover:bg-blue-700 rounded" %>
+    <% end %>
+  </div>
 </div>

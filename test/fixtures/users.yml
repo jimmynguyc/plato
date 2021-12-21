@@ -31,3 +31,8 @@ two:
   last_name: Bar
   email: bar@example.com
 
+with_org:
+  first_name: Baz
+  last_name: Baz
+  email: baz@example.com
+  organization: one

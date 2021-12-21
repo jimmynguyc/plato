@@ -1,0 +1,30 @@
+<%= form_with(model: card, url: [@board, @lane, card], class: "contents") do |form| %>
+  <% if card.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 rounded-lg mt-3">
+      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+        <% card.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mt-1">
+    <%= form.text_field :title, placeholder: 'Card Title', class: "text-field" %>
+  </div>
+
+  <div class="mt-1">
+    <%= form.text_area :description, class: "text-area" %>
+  </div>
+
+  <div class="mt-3">
+    <%= form.submit class: "submit-btn" %>
+    <% if action_name == "edit" %>
+      <%= link_to 'Cancel', board_lane_card_path(@board, @lane, card), class: 'text-xs' %>
+    <% else %>
+      <%= link_to 'Cancel', board_lane_path(@board, @lane), class: 'text-xs' %>
+    <% end %>
+  </div>
+<% end %>

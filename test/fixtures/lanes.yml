@@ -12,9 +12,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: Lane One
   board: one
 
 two:
-  title: MyString
+  title: Lane Two
   board: two

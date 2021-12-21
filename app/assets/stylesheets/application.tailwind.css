@@ -1,7 +1,55 @@
 @tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a {
+    @apply text-blue-600 underline;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
 .gradient {
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+
+.submit-btn {
+  @apply rounded text-xs py-1 px-3 bg-blue-600 text-white inline-block cursor-pointer;
+}
+
+.delete-btn {
+  @apply hover:text-red-500;
+}
+
+.text-field {
+  @apply block shadow rounded-md border border-gray-200 outline-none px-1 py-1 mt-2 w-full;
+}
+
+.text-area{
+  @apply block shadow rounded-md border border-gray-200 outline-none px-1 py-1 mt-2 w-full;
+}
+
+.card {
+  @apply bg-white p-2 rounded mt-1 border-b border-gray-900 cursor-pointer hover:bg-gray-100;
+}
+
+.card.completed {
+  background-color: #3cff33;
+}
+
+.card.incomplete {
+  background-color: #ff3333;
+}
+
+.task {
+  @apply text-xs flex my-1 p-1 hover:bg-gray-200;
 }

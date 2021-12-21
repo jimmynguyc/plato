@@ -12,4 +12,11 @@
 
 class Card < ApplicationRecord
   belongs_to :lane
+  has_many :tasks, dependent: :destroy
+
+  broadcasts_to ->(card) { [card.lane, :cards] }, target: ->(card) { "lane_#{card.lane.id}_cards" }
+
+  def completed?
+    tasks.all?(&:completed?)
+  end
 end

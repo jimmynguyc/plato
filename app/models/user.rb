@@ -24,4 +24,8 @@ class User < ApplicationRecord
   has_many :boards
   belongs_to :organization, optional: true
   has_many :users
+
+  def belongs_to_organization?
+    !!organization
+  end
 end

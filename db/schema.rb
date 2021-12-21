@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_114323) do
+ActiveRecord::Schema.define(version: 2021_12_21_191322) do
 
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "organization_id"
+    t.index ["organization_id"], name: "index_boards_on_organization_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_114323) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "plan"
   end
 
   create_table "tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -1,0 +1,34 @@
+<%= turbo_stream_from card, :tasks %>
+
+<div
+  id="<%= dom_id card %>"
+  class="card <%= card.tasks.empty? ? '' : (card.completed? ? 'completed' : 'incomplete') %>"
+  data-controller="cards"
+  data-cards-target="card"
+  >
+  <%= turbo_frame_tag "card_#{card.id}_frame" do %>
+    <%= button_to board_lane_card_path(card.lane.board, card.lane, card),
+      method: :delete,
+      class: 'delete-btn float-right',
+      data: {
+        confirmation_target: "elements",
+        message: "Are you sure?",
+        controller: "confirmation",
+        action: "click->confirmation#confirm"
+      } do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+      </svg>
+    <% end %>
+    <%= link_to card.title, edit_board_lane_card_path(card.lane.board, card.lane, card) %>
+    <span class="text-xs" data-cards-target="count"></span>
+
+    <p class="text-xs"><%= simple_format(card.description) %></p>
+
+    <div id="card_<%= card.id %>_tasks" data-controller="tasks" class="text-grey-darker mt-2 ml-2">
+      <%= render card.tasks %>
+    </div>
+
+    <%= render partial: 'tasks/new_task_button', locals: {card: card} %>
+  <% end %>
+</div>

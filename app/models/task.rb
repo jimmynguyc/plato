@@ -12,4 +12,6 @@
 
 class Task < ApplicationRecord
   belongs_to :card
+
+  broadcasts_to ->(task) { [task.card, :tasks] }, target: ->(task) { "card_#{task.card.id}_tasks" }
 end

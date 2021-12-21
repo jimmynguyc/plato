@@ -11,4 +11,7 @@
 
 class Lane < ApplicationRecord
   belongs_to :board
+  has_many :cards, dependent: :destroy
+
+  broadcasts_to ->(lane) { [lane.board, :lanes] }, target: ->(lane) { "board_#{lane.board.id}_lanes" }
 end

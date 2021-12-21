@@ -1,0 +1,26 @@
+<%= form_with(model: lane, url: [@board, lane], class: "contents") do |form| %>
+  <% if lane.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 rounded-lg mt-3">
+      <h2><%= pluralize(lane.errors.count, "error") %> prohibited this lane from being saved:</h2>
+
+      <ul>
+        <% lane.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-1">
+    <%= form.text_field :title, placeholder: 'Lane Title', class: "text-field" %>
+  </div>
+
+  <div class="my-3">
+    <%= form.submit class: "submit-btn" %>
+    <% if action_name == "edit" %>
+      <%= link_to 'Cancel', board_lane_path(@board, lane), class: 'text-xs' %>
+    <% else %>
+      <%= link_to 'Cancel', board_path(@board), class: 'text-xs' %>
+    <% end %>
+  </div>
+<% end %>
