@@ -69,6 +69,22 @@ Run tests
 $ ./bin/dr test
 ```
 
+## Subscription Service Objects
+
+- app/services/base.rb
+- app/services/solo.rb
+- app/services/startup.rb
+- app/services/business.rb
+
+Example usage:
+
+```ruby
+Subscription::Solo.new(organization: nil, duration: 12.months).amount_due
+Subscription::Startup.new(organization: org, duration: 12.months).amount_due
+Subscription::Business.new(organization: org, duration: 12.months).amount_due
+```
+
+
 ## ERD
 
 https://dbdiagram.io/d/61c221973205b45b73c7cfbf
