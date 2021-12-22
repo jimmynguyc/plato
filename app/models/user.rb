@@ -28,4 +28,11 @@ class User < ApplicationRecord
   def belongs_to_organization?
     !!organization
   end
+
+  # @return [String] solo|startup|business
+  def subscription_type
+    return 'solo' unless belongs_to_organization?
+
+    organization.plan
+  end
 end

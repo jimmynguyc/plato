@@ -1,0 +1,5 @@
+<h1>Your Invoice</h1>
+
+<p>
+Hi <%= @user.first_name %>, your amount due for <%= @duration.inspect %> is <%= number_to_currency(@amount_due) %>
+</p>
