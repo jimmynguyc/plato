@@ -16,3 +16,19 @@ one:
 
 two:
   name: Org Two
+
+startup:
+  name: Startup Yolo Org
+  plan: startup
+
+business:
+  name: Bizniz Org
+  plan: business
+
+startup_no_users:
+  name: Startup Yolo Org
+  plan: startup
+
+business_no_users:
+  name: Bizniz Org
+  plan: business

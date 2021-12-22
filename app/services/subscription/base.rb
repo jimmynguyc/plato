@@ -7,10 +7,10 @@ module Subscription
       @organization = organization
     end
 
-    def seats() = raise(NotImplementedError)
-    def monthly_fee() = raise(NotImplementedError)
-    def annual_monthly_fee() = raise(NotImplementedError)
-    def extra_seats_fee() = raise(NotImplementedError)
+    def seats() = self.class.seats
+    def monthly_fee() = self.class.monthly_fee
+    def annual_monthly_fee() = self.class.annual_monthly_fee
+    def extra_seats_fee() = self.class.extra_seats_fee
 
     def amount_due
       subscription_total + extra_seats_total

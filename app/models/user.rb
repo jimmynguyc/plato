@@ -20,6 +20,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  include Subscribable
 
   has_many :boards
   belongs_to :organization, optional: true

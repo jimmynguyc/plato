@@ -15,10 +15,14 @@
 #  organization_id        :integer
 #
 
-require "test_helper"
+require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+module UserTest
+  class SubscriptionClassTest < ActiveSupport::TestCase
+    test 'returns correct subscription class' do
+      assert_equal Subscription::Solo, users(:solo).subscription_class
+      assert_equal Subscription::Startup, users(:with_startup_org).subscription_class
+      assert_equal Subscription::Business, users(:with_business_org).subscription_class
+    end
+  end
 end

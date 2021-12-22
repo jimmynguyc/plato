@@ -31,8 +31,19 @@ two:
   last_name: Bar
   email: bar@example.com
 
-with_org:
-  first_name: Baz
-  last_name: Baz
-  email: baz@example.com
-  organization: one
+solo:
+  first_name: Solo
+  last_name: Person
+  email: solo@example.com
+
+with_startup_org:
+  first_name: Employee
+  last_name: One
+  email: startupemp@example.com
+  organization: startup
+
+with_business_org:
+  first_name: Employee
+  last_name: One
+  email: businessemp@example.com
+  organization: business
